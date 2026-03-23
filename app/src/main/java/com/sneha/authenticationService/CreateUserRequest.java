@@ -1,13 +1,23 @@
 package com.sneha.authenticationService;
 
-public class CreateUserRequest {
-    private String userName;
-    private String password;
-    //private String emailId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-    CreateUserRequest(String userName, String password){
-        //this.emailId=emailId;
-        this.userName =userName;
+public class CreateUserRequest {
+    private String username;
+    private String password;
+    private static final Logger log = LoggerFactory.getLogger(AuthenticationService.class);
+
+    CreateUserRequest(String username, String password){
+        if(username == null || username.isEmpty()){
+            log.error("Username is null or empty: %s",username);
+            throw new IllegalArgumentException("Username cannot be empty or null");
+        }
+        if(password == null || password.isEmpty()){
+            log.error("Password is null or empty: %s",password);
+            throw new IllegalArgumentException("Password cannot be null or empty");
+        }
+        this.username =username;
         this.password=password;
     }
 
@@ -15,11 +25,7 @@ public class CreateUserRequest {
         return password;
     }
 
-//    public String getEmailId() {
-//        return emailId;
-//    }
-
     public String getUserName() {
-        return userName;
+        return username;
     }
 }

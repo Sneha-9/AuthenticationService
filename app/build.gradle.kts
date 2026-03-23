@@ -10,6 +10,8 @@ version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
 }
+configurations.configureEach {
+    exclude(group = "org.springframework.boot", module = "spring-boot-starter-logging") }
 
 dependencies {
 //    testImplementation(libs.junit.jupiter)
@@ -17,10 +19,11 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     implementation("org.springframework.boot:spring-boot-starter-web")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    implementation("org.apache.logging.log4j:log4j-api:2.25.1")
-    implementation("org.apache.logging.log4j:log4j-core:2.25.1")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("org.springframework.boot:spring-boot-starter-log4j2")
+   // implementation("org.apache.logging.log4j:log4j-api:2.25.1")
+   // implementation("org.apache.logging.log4j:log4j-core:2.25.1")
 
     implementation("org.postgresql:postgresql:42.7.7")
     // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp

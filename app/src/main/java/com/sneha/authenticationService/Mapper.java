@@ -12,10 +12,5 @@ public class Mapper {
     }
 
 
-    TokenGenerationResponse mapTokenGenerationResponseToId(String id){
-        return new TokenGenerationResponse( id);
-    }
-
-
 
 }
